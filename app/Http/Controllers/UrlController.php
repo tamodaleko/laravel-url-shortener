@@ -80,6 +80,9 @@ class UrlController extends Controller
         $url = Url::where('code', $code)->first();
 
         if ($url) {
+            $url->clicks = $url->clicks++;
+            $url->save();
+
             return redirect($url->url);
         }
 
