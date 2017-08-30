@@ -18,7 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('{code}', 'UrlController@redirect');
+Route::get('{code}', 'UrlController@redirect')->where('code', '[0-9a-zA-Z]{8}');
 
 Route::post('/urls', 'UrlController@store')->name('urls.store');
 Route::delete('/urls/{id}', 'UrlController@destroy')->name('urls.destroy');
